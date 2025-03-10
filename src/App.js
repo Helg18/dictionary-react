@@ -26,6 +26,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <audio src={wordData ? wordData[0].phonetics[0].audio : null} controls />
         <a
           className="App-link"
           href="https://reactjs.org"
