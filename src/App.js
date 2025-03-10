@@ -1,41 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import dictionaryAPI from './services/dictionaryAPI';
+import React, { useState } from 'react';
+import WordSelected from './components/WordSelected/WordSelected';
+import DictionaryForm from './components/DictionaryFrom/DictionaryForm';
 import './App.css';
 
 function App() {
-  const [wordData, setWordData] = useState(null); // Estado para almacenar los datos de la palabra
-
-  useEffect(() => {
-    async function fetchWord() {
-      try {
-        const data = await dictionaryAPI.getWord('apple');
-        setWordData(data);
-      } catch (error) {
-        console.error("Error fetching word:", error);
-      }
-    }
-
-    fetchWord();
-  }, []); // El array vacío asegura que el efecto se ejecute solo una vez al montar el componente
+  const [wordData, setWordData] = useState(null);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <audio src={wordData ? wordData[0].phonetics[0].audio : null} controls />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DictionaryForm onSearch={setWordData} />
+      {wordData ? (
+        <WordSelected
+          word={wordData.word}
+          pronunciation={wordData.phonetic}
+          definition={wordData.meanings[0].definitions[0].definition}
+          example={wordData.meanings[0].definitions[0].example || ''}
+          ukSound={wordData.phonetics[0].audio}
+          usSound={wordData.phonetics[1].audio}
+        />
+      ) : (
+        <p className="placeholder-text">Search a word to see its definition</p>
+      )}
     </div>
   );
 }

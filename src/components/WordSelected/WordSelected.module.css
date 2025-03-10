@@ -1,0 +1,82 @@
+.card {
+    color: rebeccapurple;
+    max-width: 400px;
+    padding: 2rem;
+    border-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(228, 228, 228, 0.1);
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.title {
+    color: #2d3436;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.wordContainer {
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.word {
+    color: #0984e3;
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.pronunciation {
+    color: #636e72;
+    font-size: 1.1rem;
+    margin: 0.4rem 0 0;
+    font-style: italic;
+}
+
+.speechType {
+    color: #00b894;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+}
+
+.definition {
+    color: #2d3436;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.example {
+    color: #636e72;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 3px solid #dfe6e9;
+}
+
+.button {
+    background-color: #2d3436;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button:hover {
+    background-color: #0984e3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+}

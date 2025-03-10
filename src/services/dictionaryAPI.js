@@ -4,17 +4,25 @@ const BASE_URL = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 
 const request = axios.create({
     baseURL: BASE_URL,
-    timeout: 1000,
+    timeout: 5000, // Aumentamos el timeout para conexiones lentas
+    validateStatus: function (status) {
+        return status >= 200 && status < 500; // Para manejar errores 404 como respuestas válidas
+    }
 });
 
 class Api {
-    getWord = async (word) => { // Agregamos el parámetro 'word'
+    getWord = async (word) => {
         try {
-            const response = await request.get(word); // Usamos el parámetro 'word'
-            return response.data; // Retornamos toda la data
+            const response = await request.get(word);
+
+            if (response.status === 404) {
+                throw new Error('Word not found');
+            }
+
+            return response.data;
         } catch (error) {
             console.error("Error fetching word:", error);
-            throw error; // Propagamos el error para que quien llame a la función lo maneje
+            throw error;
         }
     };
 }
